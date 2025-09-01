@@ -15,7 +15,7 @@
       action: service name=httpd state=started
 
     - name: Install Database on Host machines
-      action: yum pkg=mysql-server state=present
+      action: yum pkg=mariadb105-server state=present
 
     - name: Start Docker server on host machines 
       action: service name=docker state=started    
