@@ -1,0 +1,22 @@
+---
+- name: Clone Flipkart-Clone repository
+  hosts: webservers
+  become: true
+  connection: ssh               # Use privilege escalation if needed
+  vars:
+    clone_dest: /home/ansible  # Desired clone destination on target host
+    repo_url: https://github.com/Msocial123/Flipkart-Clone.git
+ 
+  tasks:
+    - name: Ensure git is installed
+      package:
+        name: git
+        state: present
+ 
+    - name: Clone the Flipkart-Clone repository
+      git:
+        repo: "{{ repo_url }}"
+        dest: "{{ clone_dest }}"
+        version: main        # You can change this to a branch/tag if needed
+        force: yes           # Re-clone or update existing checkout
+        update: yes          # Fetch latest changes
