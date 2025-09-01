@@ -20,3 +20,5 @@
         version: main        # You can change this to a branch/tag if needed
         force: yes           # Re-clone or update existing checkout
         update: yes          # Fetch latest changes
+    - name: Copy whole files into /var/www/html
+      copy: srxc= /home/ansible/flipkart-clone/ dest=/var/www/html/
