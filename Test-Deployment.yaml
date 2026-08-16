@@ -1,0 +1,21 @@
+---
+- hosts: webservers
+  user: ansible
+  become: yes
+  connection: ssh 
+  tasks:
+
+    - name: Install the Java on webservers 
+      action: yum pkg=java state=present
+
+    - name: Install webservers on hosts
+      action: yum pkg=httpd state=present
+
+    - name: Start httpd Webserver on  Hosts 
+      action: service name=httpd state=started
+
+    - name: Install Database on Host machines
+      action: yum pkg=mariadb105-server state=present
+
+    - name: Start Docker server on host machines 
+      action: service name=docker state=started    
